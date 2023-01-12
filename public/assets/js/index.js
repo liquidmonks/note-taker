@@ -48,8 +48,10 @@ const deleteNote = (id) =>
     headers: {
       'Content-Type': 'application/json',
     },
-  });
-
+  }
+  ).then(() => {
+    getAndRenderNotes()
+  })
 const renderActiveNote = () => {
   hide(saveNoteBtn);
 
@@ -88,6 +90,7 @@ const handleNoteDelete = (e) => {
   if (activeNote.id === noteId) {
     activeNote = {};
   }
+
 
   deleteNote(noteId).then(() => {
     getAndRenderNotes();
@@ -157,11 +160,10 @@ const renderNoteList = async (notes) => {
   if (jsonNotes.length === 0) {
     noteListItems.push(createLi('No saved Notes', false));
   }
-
-  jsonNotes.forEach((note) => {
+  const newNotes = JSON.parse(jsonNotes)
+  newNotes.forEach((note) => {
     const li = createLi(note.title);
     li.dataset.note = JSON.stringify(note);
-
     noteListItems.push(li);
   });
 

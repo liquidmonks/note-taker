@@ -1,23 +1,21 @@
-const { application } = require("express");
 const express = require("express");
-const path = require("path");
-
-const PORT = process.env.port || 3001;
 
 const app = express();
+const PORT = process.env.PORT || 3001;
 
-// Middleware for parsing JSON and urlencoded form data
+app.use(express.static("./public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"));
 
-// GET Route for homepage
-app.get("/", (req, res) => res.sendFile(path.join(__dirname, "/public/index.html")));
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/public/index.html");
+});
+app.get("/notes", (req, res) => {
+  res.sendFile(__dirname + "/public/notes.html");
+});
 
-// GET Route for notes page
-app.get("/notes", (req, res) => res.sendFile(path.join(__dirname, "/public/notes.html")));
+app.use("/api", require("./routes/notesApi"));
 
-// GET /api/notes
-app.use("/api", require("./routes/notesAPI"));
-
-app.listen(PORT, () => console.log(`App listening at http://localhost:${PORT} 🚀`));
+app.listen(PORT, () => {
+  console.log(`App listening at http://localhost:${PORT} 🚀`);
+});
