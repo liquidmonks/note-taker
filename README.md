@@ -36,14 +36,9 @@ The application uses the following API routes:
 
 * DELETE `/api/notes/:id`: Receives a query parameter containing the id of a note to delete.
 
-
-
-
-
-
-
 ## Application in Action
 
+![NoteTaker](https://user-images.githubusercontent.com/114820394/212182195-ece6d846-bf4a-4852-a428-8b468c94720e.gif)
 
 
 
