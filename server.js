@@ -1,3 +1,4 @@
+const { application } = require("express");
 const express = require("express");
 const path = require("path");
 
@@ -15,5 +16,8 @@ app.get("/", (req, res) => res.sendFile(path.join(__dirname, "/public/index.html
 
 // GET Route for notes page
 app.get("/notes", (req, res) => res.sendFile(path.join(__dirname, "/public/notes.html")));
+
+// GET /api/notes
+app.use("/api", require("./routes/notesApi"));
 
 app.listen(PORT, () => console.log(`App listening at http://localhost:${PORT} 🚀`));
