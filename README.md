@@ -43,7 +43,7 @@ The application uses the following API routes:
 
 
 ## 🔗 Live Site Link
-[![Live Site](https://img.shields.io/badge/livesite-click-orange)](https://liquidmonks.github.io/team-profile-generator/www/public.html)
+[![Live Site](https://img.shields.io/badge/livesite-click-orange)](https://notablez.herokuapp.com/notes)
 
 ## Tech Stack
 
